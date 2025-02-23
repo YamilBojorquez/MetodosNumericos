@@ -42,7 +42,36 @@ public class MetodoSecante {
                 }
                 System.out.println("------------------------------------------------------------------------------------------------------\n\n");
             } else if (opcion == 2) {
+                double x1, x2, fx1, dfx1,fx2;
 
+                System.out.print("\nIngrese el punto flotante: ");
+                x1 = sc.nextDouble();
+
+                fx1 = formulaProblema(x1);
+                dfx1 = formulaDerivadaDeLaFuncion(x1);
+                System.out.println(dfx1);
+                x2 = formulaNewtonRaphson(x1, fx1, dfx1);
+                fx2 = formulaProblema(x2);
+
+                int calculos = 1, maxCalculos = 50;
+
+                System.out.printf("%-10s %-15s %-15s %-15s %-15s %-15s %n", "N", "x1", "fx1", "f'x1", "x2", "fx2");
+                System.out.println("------------------------------------------------------------------------------------------------------");
+                System.out.printf("%-10d %-15.8f %-15.8f %-15.8f %-15.8f %-15.8f %n", calculos, x1, fx1, dfx1, x2, fx2);
+
+                while (calculos < maxCalculos) {
+                    x1 = x2;
+                    fx1 = fx2;
+                    dfx1 = formulaDerivadaDeLaFuncion(x1);
+                    x2 = formulaNewtonRaphson(x1, fx1, dfx1);
+                    fx2 = formulaProblema(x2);
+
+                    if ( ((x1-x2) <= 0.00001) && ((x1-x2) >= -0.00001) ) break;
+                    calculos++;
+                
+                    System.out.printf("%-10d %-15.8f %-15.8f %-15.8f %-15.8f %-15.8f %n", calculos, x1, fx1, dfx1, x2, fx2);
+                }
+                System.out.println("------------------------------------------------------------------------------------------------------\n\n");
             }
             imprimirMenu();
             opcion = sc.nextInt();
@@ -74,13 +103,21 @@ public class MetodoSecante {
         System.out.print("Cuál es su opción: ");
     }
 
+    private static double formulaProblema (double x){
+        double fx = (10 * x / 9) - 1;
+        return Math.asin(fx) + (fx * Math.sqrt(1 - Math.pow(fx, 2))) - 1.100144;
+    }
 
     private static double formulaSecante (double x1, double x2, double fx1, double fx2){
         return x1 - ((x1 - x2) * fx1) / (fx1 - fx2);
     }
 
-    private static double formulaProblema (double x){
-        double fx = (10 * x / 9) - 1;
-        return Math.asin(fx) + (fx * Math.sqrt(1 - Math.pow(fx, 2))) - 1.100144;
+    private static double formulaNewtonRaphson (double x1, double fx1, double dfx1){
+        return x1 - (fx1 / dfx1);
     }
+
+    private static double formulaDerivadaDeLaFuncion (double x){
+        return (20.0 / 9) * Math.sqrt(1 - Math.pow((((10 * x) / 9) - 1), 2));
+    }
+    
 }
