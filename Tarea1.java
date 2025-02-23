@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Tarea1 {
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n\tINSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
-        System.out.println("\t    Ing. En Sistemas Computacionales");
+        System.out.println("\n\t        INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
+        System.out.println("\t            Ing. En Sistemas Computacionales");
         System.out.println("\nBojórquez Chávez Yamil Santiago.");
         System.out.println("Solución de ecuaciones.");
         System.out.println("De 9:00 a 10:00 horas.");
@@ -19,7 +19,7 @@ public class Tarea1 {
         System.out.print("Unidad: ");
         String unidad = sc.nextLine();
 
-        System.out.println("\n\tRaíces de una Ecuación");
+        System.out.println("\n\t\t       Raíces de una Ecuación");
         System.out.println("1.- Método de la Secante");
         System.out.println("2.- Método de Newton Raphson");
         System.out.println("10.- F I N");
@@ -42,12 +42,12 @@ public class Tarea1 {
 
                 int calculos = 1, maxCalculos = 50;
 
-                System.out.println("\n\tINSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
-                System.out.println("\t    Ing. En Sistemas Computacionales");
+                System.out.println("\n\t        INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
+                System.out.println("\t            Ing. En Sistemas Computacionales");
                 System.out.println("\nBojórquez Chávez Yamil Santiago.");
                 System.out.println("Solución de ecuaciones: Método de la Secante.");
                 System.out.println("De 9:00 a 10:00 horas.");
-                System.out.println("Pregunta: " + pregunta);
+                System.out.println("\nPregunta: " + pregunta);
                 System.out.printf("%-10s %-15s %-15s %-15s %-15s %-15s %-15s %n", "N", "x1", "fx1", "x2", "fx2", "x3", "fx3");
                 System.out.println("------------------------------------------------------------------------------------------------------");
                 System.out.printf("%-10d %-15.8f %-15.8f %-15.8f %-15.8f %-15.8f %-15.8f %n", calculos, x1, fx1, x2, fx2, x3, fx3);
@@ -66,7 +66,7 @@ public class Tarea1 {
                     System.out.printf("%-10d %-15.8f %-15.8f %-15.8f %-15.8f %-15.8f %-15.8f %n", calculos, x1, fx1, x2, fx2, x3, fx3);
                 }
                 System.out.println("------------------------------------------------------------------------------------------------------");
-                System.out.println("La Raíz de la Ecuación = " + x3 + " Unidades");
+                System.out.println("\n" + concepto +  " = " + x3 + " " + unidad + "\n\n");
             } else if (opcion == 2) {
                 double x1, x2, fx1, dfx1,fx2;
 
@@ -80,12 +80,12 @@ public class Tarea1 {
 
                 int calculos = 1, maxCalculos = 50;
 
-                System.out.println("\n\tINSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
-                System.out.println("\t    Ing. En Sistemas Computacionales");
+                System.out.println("\n\t        INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
+                System.out.println("\t            Ing. En Sistemas Computacionales");
                 System.out.println("\nBojórquez Chávez Yamil Santiago.");
                 System.out.println("Solución de ecuaciones: Método de Newton Raphson.");
                 System.out.println("De 9:00 a 10:00 horas.");
-                System.out.println("Pregunta: " + pregunta);
+                System.out.println("\nPregunta: " + pregunta);
                 System.out.printf("%-10s %-15s %-15s %-15s %-15s %-15s %n", "N", "x1", "fx1", "f'x1", "x2", "fx2");
                 System.out.println("------------------------------------------------------------------------------------------------------");
                 System.out.printf("%-10d %-15.8f %-15.8f %-15.8f %-15.8f %-15.8f %n", calculos, x1, fx1, dfx1, x2, fx2);
@@ -103,9 +103,9 @@ public class Tarea1 {
                     System.out.printf("%-10d %-15.8f %-15.8f %-15.8f %-15.8f %-15.8f %n", calculos, x1, fx1, dfx1, x2, fx2);
                 }
                 System.out.println("------------------------------------------------------------------------------------------------------");
-                System.out.println("La Raíz de la Ecuación = " + x2 + " Unidades");
+                System.out.println("\n" + concepto +  " = " + x2 + " " + unidad + "\n\n");
             }
-            System.out.println("\n\tRaíces de una Ecuación");
+            System.out.println("\n\t\t       Raíces de una Ecuación");
             System.out.println("1.- Método de la Secante");
             System.out.println("2.- Método de Newton Raphson");
             System.out.println("10.- F I N");
