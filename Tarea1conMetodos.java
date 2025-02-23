@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MetodoSecante {
+public class Tarea1conMetodos {
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
         imprimirPresentacion();
@@ -49,7 +49,6 @@ public class MetodoSecante {
 
                 fx1 = formulaProblema(x1);
                 dfx1 = formulaDerivadaDeLaFuncion(x1);
-                System.out.println(dfx1);
                 x2 = formulaNewtonRaphson(x1, fx1, dfx1);
                 fx2 = formulaProblema(x2);
 
@@ -76,10 +75,8 @@ public class MetodoSecante {
             imprimirMenu();
             opcion = sc.nextInt();
         }
+        sc.close();
     }
-
-
-
 
 
 
