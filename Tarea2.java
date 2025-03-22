@@ -89,7 +89,64 @@ public class Tarea2 {
                 System.out.println("Resultados:");
 
             } else if (opcion == 2) {
-                System.out.println("es la cintraseoq de ki interne");
+                double [] vAnt = new double [orden];
+                double [] vAct = new double [orden];
+                double nc = 0, errorTotal = 0, suma, coef;
+
+                for (int f = 0; f < orden; f++) {
+                    vAnt[f] = 50;
+                    vAct[f] = 0;
+                }
+
+                int error = 1, totalCalculos = 50;
+
+                double [][] matriz = {
+                    {20, 10, 9, 9, 125*100},
+                    {8, 18, 6, 14, 136*100},
+                    {8, 8, 16, 12, 144*100},
+                    {8, 8, 9, 24, 133*100}
+                };
+
+
+
+
+                for (int f = 0; f < orden; f++) {
+                    System.out.print(vAnt[f] + " | ");
+                }
+                System.out.println("Error total: " + errorTotal);
+
+                for (int f = 0; f < orden; f++) {
+                    suma = 0;
+                    coef = matriz[f][f];
+                    suma = suma + matriz[f][orden];
+                    for (int c = 0; c < orden; c++) {
+                        if (f == c) {
+                            
+                        } else if (c < f) {
+                            suma = suma + ( (matriz[f][c] * -1.0) * vAct[c] );
+                        } else {
+                            suma = suma + ( (matriz[f][c] * -1.0) * vAnt[c] );
+                        }
+                    }
+                    suma = suma / coef;
+                    vAct[f] = suma;
+                }
+
+
+
+                for (int p = 0; p < orden; p++) {
+                    errorTotal = errorTotal + Math.abs( Math.abs(vAct[p])  -  Math.abs(vAnt[p]) );               
+                }
+                nc = nc + 1;
+                System.out.println(nc);
+                for (int p = 0; p < orden; p++) {
+                    System.out.println(vAct[p]);
+                    vAnt[p] = vAct[p];
+                }
+                System.out.println(errorTotal);
+
+                
+
             }
         } while (opcion != 10);
         sc.close();
