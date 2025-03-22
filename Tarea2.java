@@ -51,6 +51,7 @@ public class Tarea2 {
                         matriz[f][c] = sc.nextInt();
                     }
                 }*/
+                System.out.println("Matriz de Datos:");
                 imprimirMatriz(matriz, orden);
 
                 for (int k = 0; k < orden-1; k++) {
@@ -62,6 +63,7 @@ public class Tarea2 {
                         }
                     }
                 }
+                System.out.println("Matriz de ceros abajo de la diagonal:");
                 imprimirMatriz(matriz, orden);
 
                 for (int k = orden-1; k > 0; k--) {
@@ -74,23 +76,17 @@ public class Tarea2 {
                         matriz[f][k] = 0;
                     }
                 }
+                System.out.println("Matriz ceros abajo y arriba de la diagonal:");
                 imprimirMatriz(matriz, orden);
 
                 for (int f = 0; f < orden; f++) {
                     matriz[f][orden] = matriz[f][orden] / matriz [f][f];
                     matriz[f][f] = matriz [f][f] / matriz[f][f];
                 }
+                System.out.println("Matriz Identidad:");
                 imprimirMatriz(matriz, orden);
 
-
-
-
-
-
-
-
-
-
+                System.out.println("Resultados:");
 
             } else if (opcion == 2) {
                 System.out.println("es la cintraseoq de ki interne");
@@ -99,34 +95,14 @@ public class Tarea2 {
         sc.close();
     }
 
-
-
     private static void imprimirMatriz(double[][] matriz, int orden){
-        for(int i = 0; i < orden; i++){
-          if(i == 0){
-            System.out.print("┌");
-            for(int j = 0; j <= orden; j++){
-              System.out.print("───────────────" + (j == orden ? "┐\n" : "┬"));
-            }
-          }
-          
-          System.out.print("│");
-          for(int j = 0; j <= orden; j++){
-            System.out.print(String.format("%15d│", matriz[i][j]));
-          }
-          System.out.println();
-          
-          if(i < orden - 1){
-            System.out.print("├");
-            for(int j = 0; j <= orden; j++){
-              System.out.print("───────────────" + (j == orden ? "┤\n" : "┼"));
-            }
-          } else{
-            System.out.print("└");
-            for(int j = 0; j <= orden; j++){
-              System.out.print("───────────────" + (j == orden ? "┘\n" : "┴"));
-            }
-          }
+      System.out.println("--------------------------------------------------------------------------------------------------");
+      for (int i = 0; i < orden; i++) {
+        for (int j = 0; j < orden+1; j++) {
+          System.out.printf("%-15.5f", matriz[i][j]);
         }
+        System.out.println();
       }
+      System.out.println("--------------------------------------------------------------------------------------------------\n");
+    }
 }
