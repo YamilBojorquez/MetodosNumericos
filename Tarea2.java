@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Tarea2 {
     public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n\t        INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
-        System.out.println("\t            Ing. En Sistemas Computacionales");
+        System.out.println("\n\t\t\t        INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
+        System.out.println("\t\t\t            Ing. En Sistemas Computacionales");
         System.out.println("\nBojórquez Chávez Yamil Santiago.");
         System.out.println("Solución de Sistema de Ecuaciones.");
         System.out.println("De 9:00 a 10:00 horas.");
@@ -53,10 +53,11 @@ public class Tarea2 {
                     }
                     System.out.println();
                 }
-                System.out.println("\n\t        INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
-                System.out.println("\t            Ing. En Sistemas Computacionales");
+                System.out.println("\n\t\t\t\t          INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
+                System.out.println("\t\t\t\t               Ing. En Sistemas Computacionales");
                 System.out.println("\nBojórquez Chávez Yamil Santiago.");
                 System.out.println("Solución de Sistemas de Ecuaciones.");
+                System.out.println("Metodo de Gauss Jordan.");
                 System.out.println("De 9:00 a 10:00 horas.");
                 System.out.println("\nPregunta: " + pregunta);
                 System.out.println("\nMatriz de Datos:");
@@ -103,7 +104,6 @@ public class Tarea2 {
                 double [] vAnt = new double [orden];
                 double [] vAct = new double [orden];
                 double errorTotal = 0, suma, coef;
-                int nc = 0;
 
                 System.out.println("\nCaptura los valores iniciales del problema");
                 for (int f = 0; f < orden; f++) {
@@ -129,10 +129,11 @@ public class Tarea2 {
                     System.out.println();
                 }
 
-                System.out.println("\n\t        INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
-                System.out.println("\t            Ing. En Sistemas Computacionales");
+                System.out.println("\n\t\t\t\t          INSTITUTO TECNOLÓGICO NACIONAL DE MÉXICO");
+                System.out.println("\t\t\t\t               Ing. En Sistemas Computacionales");
                 System.out.println("\nBojórquez Chávez Yamil Santiago.");
                 System.out.println("Solución de Sistemas de Ecuaciones.");
+                System.out.println("Metodo de Gauss Seidel.");
                 System.out.println("De 9:00 a 10:00 horas.");
                 System.out.println("\nPregunta: " + pregunta);
 
@@ -142,8 +143,15 @@ public class Tarea2 {
                 for (int f = 0; f < orden; f++) {
                     System.out.printf(" %-12s |", "Maquina " + (f + 1));
                 }
-                System.out.printf(" %-12s |\n", "ErrorTotal");
+                System.out.printf(" %-12s |\n", "Error Total");
                 System.out.println("-------------------------------------------------------------------------------------");
+
+                int nc = 0;
+                System.out.printf("| %-6d |", nc);
+                for (int p = 0; p < orden; p++) {
+                    System.out.printf(" %-12.5f |", vAnt[p]);
+                }
+                System.out.printf(" %-12.5f |\n", errorTotal);
 
                 do {
                     for (int f = 0; f < orden; f++) {
@@ -170,20 +178,19 @@ public class Tarea2 {
                     nc = nc + 1;
                     System.out.printf("| %-6d |", nc);
                     for (int p = 0; p < orden; p++) {
-                        System.out.printf(" %-12.6f |", vAct[p]);
+                        System.out.printf(" %-12.5f |", vAct[p]);
                         vAnt[p] = vAct[p];
                     }
-                    System.out.printf(" %-12.6f |\n", errorTotal);
+                    System.out.printf(" %-12.5f |\n", errorTotal);
         
                 } while (errorTotal > error && nc <= totalCalculos);
 
                 System.out.println("-------------------------------------------------------------------------------------\n");
 
-
                 if (errorTotal <= error) {
                     System.out.println("Resultados: ");
                     for (int i = 0; i < orden; i++) {
-                        System.out.println( "\t" + concepto[i] + " = " + vAct[i] + " " + unidad[i] );
+                        System.out.printf("\t%s = %.5f %s\n", concepto[i], vAct[i], unidad[i]);
                     }
                 } else {
                     System.out.println("El proceso superó el número máximo de cálculos y no encontró la mejor aproximación");
@@ -191,7 +198,7 @@ public class Tarea2 {
             }
         } while (opcion != 10);
         sc.close();
-    }
+    } 
 
     private static void imprimirMatriz(double[][] matriz, int orden){
       System.out.println("--------------------------------------------------------------------------------------------------");
