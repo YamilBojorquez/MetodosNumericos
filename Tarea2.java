@@ -141,7 +141,7 @@ public class Tarea2 {
                 System.out.println("-------------------------------------------------------------------------------------");
                 System.out.printf("| %-6s |", "No.");
                 for (int f = 0; f < orden; f++) {
-                    System.out.printf(" %-12s |", "Maquina " + (f + 1));
+                    System.out.printf(" %-12s |", "x " + (f + 1));
                 }
                 System.out.printf(" %-12s |\n", "Error Total");
                 System.out.println("-------------------------------------------------------------------------------------");
