@@ -1,6 +1,4 @@
-import org.apache.commons.math3.distribution.ChiSquaredDistribution;
-
-public class hola {
+public class PruebaDeLasSeries {
     public static void main(String [] args) {
         double[] datosUi = { // Estos son los datos Ui que usaremos para formar pares
             0.2594, 0.2661, 0.2737, 0.2740, 0.3109, 0.3263, 0.3276, 0.3321, 0.3358,
@@ -23,7 +21,6 @@ public class hola {
         datosUi2[N-1] = datosUi[0]; // El último dato se empareja con el primero para que no queden pares solos y tener la misma cantidad de pares que de número de datos
 
         double Eij = N / Math.pow(n, 2); // Calculamos Eij para fórmulas posteriores
-        
 
         // Procedemos a calcular Oij (cantidad de pares por celda)
         int[] celdaEnX = new int [N]; 
@@ -50,7 +47,34 @@ public class hola {
             xoCuadrada += vectorXoCuadrada[i]; // Sumamos cada valor del vector XoCuadrada para obtener el resultado
         }
 
-        System.out.println(xoCuadrada);
 
+        double [][] tablaChi ={        // Tabla chi cuadrada
+            {1,3.841},   {2,5.991},	  {3,7.815},   {4,9.488},	{5,11.070}, 
+            {6,12.592},	 {7,14.067},  {8,15.507},  {9,16.919},	{10,18.307}, 
+            {11,19.675}, {12,21.026}, {13,22.362}, {14,23.685}, {15,24.996},
+            {16,26.296}, {17,27.587}, {18,28.869}, {19,30.144}, {20,31.410},	
+            {21,32.671}, {22,33.924}, {23,35.172}, {24,36.415}, {25,37.652},
+            {26,38.885}, {27,40.113}, {28,41.337}, {29,42.557}, {30,43.773},
+            {31,44.985}, {32,46.194}, {33,47.400}, {34,48.602}, {35,49.802},
+            {40,55.758}, {50,67.500}, {60,79.1},   {100,124.3}
+        };
+
+        double gl = Math.pow(n, 2) - 1; // gl = grados de libertad
+
+        double valorAComparar = 0;      // Aqui obtendremos el valor de la tabla chi cuadrada que vamos a comparar con el valor que calculamos en nuestro código
+        for (int i = 0; i < tablaChi.length; i++) {
+            if (tablaChi[i][0] == gl) {
+                valorAComparar = tablaChi[i][1];
+                break;
+            }
+        }
+        
+        // Comparamos nuestra Chi calculada con la Chi de la tabla
+        System.out.println("¿ " + xoCuadrada + " > " + valorAComparar + " ?");
+        if (xoCuadrada > valorAComparar) {
+            System.out.println("Si. Rechazamos la hipótesis nula, puesto que existen diferencias significativas.");
+        } else {
+            System.out.println("No. No rechazamos la hipótesis nula, puesto que no hay diferencias significativas.");
+        }
     }
 }
