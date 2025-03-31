@@ -1,4 +1,4 @@
-public class PruebaDeLasSeries {
+public class chatgpt {
     public static void main(String [] args) {
         double[] datosUi = { // Estos son los datos Ui que usaremos para formar pares
             0.2594, 0.2661, 0.2737, 0.2740, 0.3109, 0.3263, 0.3276, 0.3321, 0.3358,
@@ -25,6 +25,8 @@ public class PruebaDeLasSeries {
         // Procedemos a calcular Oij (cantidad de pares por celda)
         int[] celdaEnX = new int [N]; 
         int[] celdaEnY = new int [N];
+        System.out.println("|   Ui   |  Ui+1  | Celda (i, j) |");
+        System.out.println("----------------------------------");
         for (int i = 0; i < N; i++) {
             celdaEnX[i] = (int) Math.floor(datosUi[i] * n) + 1; // Encontramos en qué celda de X se encuentra el primer dato del par
             celdaEnY[i] = (int) Math.floor(datosUi2[i] * n) + 1;// Encontramos en qué celda de Y se encuentra el segundo dato del par
@@ -37,6 +39,7 @@ public class PruebaDeLasSeries {
 
             int posicionCelda = (i - 1) * n + (j - 1); // Calculamos en qué celda está nuestro par
             Oij[posicionCelda]++; // Contamos la celda
+            System.out.printf("| %.4f | %.4f |    (%d, %d)    |\n", datosUi[k], datosUi2[k], celdaEnX[k], celdaEnY[k]);
         }
 
         // Calculamos Xo ^2
@@ -47,6 +50,15 @@ public class PruebaDeLasSeries {
             xoCuadrada += vectorXoCuadrada[i]; // Sumamos cada valor del vector XoCuadrada para obtener el resultado
         }
 
+        System.out.println("\n| Celda (i, j) | Oij |  Eij  | ((Oij - Eij)^2)/2 |");
+        System.out.println("-------------------------------------------------");
+        for (int i = 0; i < Oij.length; i++) {
+            int fila = (i / n) + 1;
+            int columna = (i % n) + 1;
+            System.out.printf("|    (%d, %d)    | %3d | %5.2f |    %9.2f      |\n", fila, columna, Oij[i], Eij, vectorXoCuadrada[i]);
+        }
+
+        System.out.println("\nResultado de la sumatoria de ((Oij - Eij)^2)/2 = " + xoCuadrada);
 
         double [][] tablaChi ={        // Tabla chi cuadrada
             {1,3.841},   {2,5.991},	  {3,7.815},   {4,9.488},	{5,11.070}, 
