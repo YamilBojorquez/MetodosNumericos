@@ -16,7 +16,6 @@ public class Tarea3 {
 
         System.out.print("Valor real: ");
         Double valorReal = sc.nextDouble();
-        //sc.nextLine();
         System.out.print("Límite Inferior: ");
         double limInf = sc.nextDouble();
         System.out.print("Límite Superior: ");
@@ -26,7 +25,7 @@ public class Tarea3 {
         System.out.print("Error del Problema: ");
         Double errorProblema = sc.nextDouble();
         System.out.print("Número de Procesos: ");
-        int NumeroProcesos = sc.nextInt();
+        int numeroProcesos = sc.nextInt();
 
         double limInfInicial = limInf;
         double limSupInicial = limSup;
@@ -57,7 +56,7 @@ public class Tarea3 {
                 valorCalculado = valorCalculado + area;
                 limInf = limSup;
             }        
-            calcTotales++;
+            calcTotales = calcTotales + 1;
 
             System.out.println("---------------------------------------------------------------------");
 
@@ -76,10 +75,10 @@ public class Tarea3 {
             }
             trapecios = trapecios * 2;
             limInf = limInfInicial;
-        } while (calcTotales < NumeroProcesos && errorMetodo > errorProblema);
+        } while (calcTotales < numeroProcesos && errorMetodo > errorProblema);
 
-        if ( calcTotales == NumeroProcesos && errorMetodo > errorProblema ) {
-            System.out.println("No hay aproximación");
+        if ( calcTotales == numeroProcesos && errorMetodo > errorProblema ) {
+            System.out.println("No se alcanzó la precisión deseada con el número máximo de procesos.");
         }
         sc.close();
     }
